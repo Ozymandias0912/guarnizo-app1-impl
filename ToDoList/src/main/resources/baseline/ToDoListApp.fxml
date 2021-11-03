@@ -46,14 +46,16 @@
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="81.0" prefWidth="760.0">
                <children>
                   <TextField fx:id="titleInput" alignment="CENTER" promptText="Task input" />
-                  <TextField fx:id="yearInput" layoutX="152.0" prefHeight="29.0" prefWidth="152.0" promptText="Due Date Year" />
-                  <TextField fx:id="monthInput" layoutX="304.0" layoutY="1.0" prefHeight="28.0" prefWidth="152.0" promptText="Due Date Month" />
-                  <TextField fx:id="dayInput" layoutX="456.0" layoutY="1.0" promptText="Due Date Day" />
-                  <TextField fx:id="descriptionInput" layoutX="607.0" promptText="Description" />
+                  <TextField fx:id="yearInput" layoutX="429.0" layoutY="-1.0" prefHeight="29.0" prefWidth="152.0" promptText="Due Date Year" />
+                  <TextField fx:id="monthInput" layoutX="581.0" layoutY="-2.0" prefHeight="28.0" prefWidth="152.0" promptText="Due Date Month" />
+                  <TextField fx:id="dayInput" layoutX="733.0" promptText="Due Date Day" />
+                  <TextField fx:id="descriptionInput" layoutX="152.0" layoutY="1.0" promptText="Description" />
                   <Button contentDisplay="TOP" layoutX="4.0" layoutY="31.0" mnemonicParsing="false" onAction="#add" prefHeight="31.0" prefWidth="116.0" text="Add" />
                   <Button layoutX="122.0" layoutY="30.0" mnemonicParsing="false" onAction="#remove" prefHeight="33.0" prefWidth="110.0" text="Remove" />
                   <Button layoutX="233.0" layoutY="30.0" mnemonicParsing="false" onAction="#removeAll" prefHeight="32.0" prefWidth="99.0" text="Remove All" />
-                  <Button layoutX="331.0" layoutY="29.0" mnemonicParsing="false" onAction="#edit" prefHeight="31.0" prefWidth="98.0" text="Edit" />
+                  <Button layoutX="561.0" layoutY="31.0" mnemonicParsing="false" onAction="#editDueDate" prefHeight="23.0" prefWidth="125.0" text="Edit Due Date" />
+                  <Button layoutX="443.0" layoutY="31.0" mnemonicParsing="false" onAction="#addWithDueDate" text="Add with due date" />
+                  <Button layoutX="332.0" layoutY="33.0" mnemonicParsing="false" onAction="#edit" prefHeight="27.0" prefWidth="88.0" text="Edit" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="760.0">

@@ -24,7 +24,7 @@ public class Item {
 
         this.description = "Notes about the task goes here";
 
-        this.dueDateString = setValidDueDate();
+        this.dueDateString = "";
 
 
         this.complete = false;
@@ -36,7 +36,7 @@ public class Item {
 
         this.description = "Notes about the task goes here";
 
-        this.dueDateString = setValidDueDate();//create a method that receives input and creates a valid dueDate
+        this.dueDateString = "";//create a method that receives input and creates a valid dueDate
 
         this.complete = false;
     }
@@ -47,7 +47,7 @@ public class Item {
 
         editDescription(newDescription);
 
-        this.dueDateString = setValidDueDate();//create a method that receives input and creates a valid dueDate
+        this.dueDateString = "";
 
         this.complete = false;
     }
