@@ -1,0 +1,60 @@
+@startuml
+class Item{
+- title
+- description
+- dueDate
+- complete
+
++ editTitle()
++ editDescription()
++ editDueDate()
++ markComplete()
+
+}
+
+
+
+
+
+
+ class ToDoList{
+- Title //at least 3 characters long
+- item[] //at least 256 items
+
++ addItem()
++removeItem()
++ displayItemsInToDoList()
++ displayIncompleteItems()
++ displayCompleteItems()
+
+
+
+ }
+
+
+
+
+
+ class ToDoListApplication{
+- ToDoList[]
+
++ addToDoList()
++ removeToDoList()
++ editToDoList()
++ saveToDoList()
++ loadToDoList()
+ }
+
+ class main extends ToDoListApplication {
+ +launch()
+ }
+
+ ToDoList --> ToDoListApplication
+ Item --> ToDoList
+
+
+
+
+
+
+@enduml
