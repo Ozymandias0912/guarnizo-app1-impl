@@ -101,7 +101,7 @@ public class ToDoListAppController implements Initializable {
     @FXML
     void editDueDate (ActionEvent event){
 
-        //removing new version of the item
+        //removing old version of the item
         int selectedItem = table.getSelectionModel().getSelectedIndex();
         table.getItems().remove(selectedItem);
 
@@ -119,7 +119,7 @@ public class ToDoListAppController implements Initializable {
     @FXML
     void edit (ActionEvent event){
 
-        //removing new version of the item
+        //removing old version of the item
         int selectedItem = table.getSelectionModel().getSelectedIndex();
         table.getItems().remove(selectedItem);
 
