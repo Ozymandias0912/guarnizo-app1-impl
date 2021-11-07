@@ -5,13 +5,11 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Menu;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.swing.*;
+import java.awt.*;
 import java.net.URL;
 import java.util.Collections;
 import java.util.GregorianCalendar;
@@ -20,117 +18,50 @@ import java.util.ResourceBundle;
 public class ToDoListAppController implements Initializable {
 
     @FXML
-    private TableView<Item> table;
-
-    @FXML
-    private TableColumn<Item, Boolean> completed;
-
-    @FXML
-    private TableColumn<Item, String> description;
-
-    @FXML
-    private TableColumn<Item, String> dueDate;
+    private TableColumn<Item, Integer> row;
 
     @FXML
     private TableColumn<Item, String> title;
 
     @FXML
-    private TextField titleInput;
+    private TableColumn<Item, String> description;
 
     @FXML
-    private TextField yearInput;
+    private TableColumn<Item, CheckBox> completed;
 
     @FXML
-    private TextField monthInput;
+    private TableColumn<Item, String> dueDate;
 
     @FXML
-    private TextField dayInput;
+    private TableView<Item> table;
 
-    @FXML
-    private TextField descriptionInput;
-
+    ObservableList<Item> list = FXCollections.observableArrayList();
 
 
-
+    //Initializing...
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
+    public void initialize(URL url, ResourceBundle rb){
+
+        //create checkbox objects
+        for(int i = 0; i < 100; i++){
+
+            CheckBox check = new CheckBox("task #" + (i + 1));
+
+            list.add(new Item( i + 1, "", "", check, ""));
+        }
+
+        table.setItems(list);
+
+        row.setCellValueFactory(new PropertyValueFactory<Item, Integer>("row"));
         title.setCellValueFactory(new PropertyValueFactory<Item, String>("title"));
-        dueDate.setCellValueFactory(new PropertyValueFactory<Item, String>("dueDate"));
         description.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
-        completed.setCellValueFactory(new PropertyValueFactory<Item, Boolean>("completed"));
-
+        completed.setCellValueFactory(new PropertyValueFactory<Item, CheckBox>("completed"));
+        dueDate.setCellValueFactory(new PropertyValueFactory<Item, String>("dueDate"));
     }
 
-    //adding a row with a button
-    @FXML
-    void addWithDueDate (ActionEvent event){
-        Item newItem = new Item(titleInput.getText(), descriptionInput.getText(),
-                Integer.parseInt(yearInput.getText()), Integer.parseInt(monthInput.getText()),
-                Integer.parseInt(dayInput.getText()) );
 
-        ObservableList <Item> list = table.getItems();
-        list.add(newItem);
 
-        table.setItems(list);
-    }
-    //trying to make the date optional
-    @FXML
-    void add (ActionEvent event){
-        Item newItem = new Item(titleInput.getText(), descriptionInput.getText());
 
-        ObservableList <Item> list = table.getItems();
-        list.add(newItem);
 
-        table.setItems(list);
-    }
-//remove button
-    @FXML
-    void remove (ActionEvent event){
-        int selectedItem = table.getSelectionModel().getSelectedIndex();
-        table.getItems().remove(selectedItem);
-    }
-//remove all tasks button
-    @FXML
-    void removeAll (ActionEvent event){
-        table.getItems().clear();
-    }
-
-    //edit task button
-
-    @FXML
-    void editDueDate (ActionEvent event){
-
-        //removing old version of the item
-        int selectedItem = table.getSelectionModel().getSelectedIndex();
-        table.getItems().remove(selectedItem);
-
-        //adding new version of the item
-        Item newItem = new Item(titleInput.getText(), descriptionInput.getText(),
-                Integer.parseInt(yearInput.getText()), Integer.parseInt(monthInput.getText()), Integer.parseInt(dayInput.getText()));
-
-        ObservableList <Item> list = table.getItems();
-        list.add(selectedItem, newItem);
-
-        table.setItems(list);
-
-    }
-
-    @FXML
-    void edit (ActionEvent event){
-
-        //removing old version of the item
-        int selectedItem = table.getSelectionModel().getSelectedIndex();
-        table.getItems().remove(selectedItem);
-
-        //adding new version of the item
-        Item newItem = new Item(titleInput.getText(), descriptionInput.getText() );
-
-        ObservableList <Item> list = table.getItems();
-        list.add(selectedItem, newItem);
-
-        table.setItems(list);
-
-    }
-
-}
+}//end class controller
