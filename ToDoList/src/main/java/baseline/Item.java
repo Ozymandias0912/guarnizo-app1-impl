@@ -2,11 +2,6 @@ package baseline;
 
 import javafx.scene.control.CheckBox;
 
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.InputMismatchException;
-
 public class Item {
     //create Item class
 

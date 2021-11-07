@@ -1,18 +1,16 @@
 package baseline;
 
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.*;
-import java.awt.*;
+
 import java.net.URL;
-import java.util.Collections;
-import java.util.GregorianCalendar;
 import java.util.ResourceBundle;
 
 public class ToDoListAppController implements Initializable {
@@ -38,27 +36,32 @@ public class ToDoListAppController implements Initializable {
     ObservableList<Item> list = FXCollections.observableArrayList();
 
 
+
     //Initializing...
 
     @Override
     public void initialize(URL url, ResourceBundle rb){
 
+        row.setCellValueFactory(new PropertyValueFactory<>("row"));
+        title.setCellValueFactory(new PropertyValueFactory<>("title"));
+        description.setCellValueFactory(new PropertyValueFactory<>("description"));
+        completed.setCellValueFactory(new PropertyValueFactory<>("completed"));
+        dueDate.setCellValueFactory(new PropertyValueFactory<>("dueDate"));
+
         //create checkbox objects
-        for(int i = 0; i < 100; i++){
+        for(int i = 0; i < 99; i++){
 
-            CheckBox check = new CheckBox("task #" + (i + 1));
+            list.add(new Item( i + 1, "Call Boss", "Now", new CheckBox(), ""));
 
-            list.add(new Item( i + 1, "", "", check, ""));
         }
+
 
         table.setItems(list);
 
-        row.setCellValueFactory(new PropertyValueFactory<Item, Integer>("row"));
-        title.setCellValueFactory(new PropertyValueFactory<Item, String>("title"));
-        description.setCellValueFactory(new PropertyValueFactory<Item, String>("description"));
-        completed.setCellValueFactory(new PropertyValueFactory<Item, CheckBox>("completed"));
-        dueDate.setCellValueFactory(new PropertyValueFactory<Item, String>("dueDate"));
+
     }
+
+
 
 
 
