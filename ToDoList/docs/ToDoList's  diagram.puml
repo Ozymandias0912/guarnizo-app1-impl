@@ -5,55 +5,78 @@ class Item{
 - dueDate
 - complete
 
-+ editTitle()
-+ editDescription()
-+ editDueDate()
-+ markComplete()
++ Item(String title, String description, Boolean complete)
+
++ Item(String title, String description, Boolean complete, String dueDateString)
+
++ String getTitle()
+
++ setTitle(String title)
+
++ String getDescription()
+
++ setDescription(String description)
+
++ Boolean getComplete()
+
++ setComplete(Boolean complete)
+
++ String getDueDateString()
+
++ setDueDateString(String dueDateString)
+
++ String validateDescription(String input)
 
 }
 
 
 
+class ToDoListAppController implements initializable{
 
+- TableColumn<Item, String> title;
 
+- TableColumn<Item, String> description;
 
- class ToDoList{
-- Title //at least 3 characters long
-- item[] //at least 256 items
+- TableColumn<Item, Boolean> complete;
 
-+ addItem()
-+removeItem()
-+ displayItemsInToDoList()
-+ displayIncompleteItems()
-+ displayCompleteItems()
+- TableColumn<Item, String> dueDateString;
 
+- TableView<Item> table;
 
+- ObservableList<Item> list = FXCollections.observableArrayList();
+
+- TextField titleInput;
+
+- TextField descriptionInput;
+
+- DatePicker datePicker;
+
+- FileChooser fileChooser = new FileChooser();
+
++ initialize(URL url, ResourceBundle rb)
+
++ addTask(ActionEvent ae)
+
++ removeTask(ActionEvent ae)
+
++ removeAllTasks(ActionEvent ae)
+
++public void editTask(ActionEvent ae)
+
++ saveFile(ActionEvent ae)
+
++ save(File file, String content)
+
++ loadFile(ActionEvent ae)
 
  }
 
+class ToDoListApplication extends Application{
++launch()
+}
 
-
-
-
- class ToDoListApplication{
-- ToDoList[]
-
-+ addToDoList()
-+ removeToDoList()
-+ editToDoList()
-+ saveToDoList()
-+ loadToDoList()
- }
-
- class main extends ToDoListApplication {
- +launch()
- }
-
- ToDoList --> ToDoListApplication
- Item --> ToDoList
-
-
-
+ Item ---> ToDoListAppController
+ ToDoListAppController ---> ToDoListApplication
 
 
 

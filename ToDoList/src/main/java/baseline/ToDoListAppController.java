@@ -193,7 +193,7 @@ public class ToDoListAppController implements Initializable {
         }
     }
 
-    private void save(File file, String content) {
+    public void save(File file, String content) {
 
         try{
             FileWriter writer = new FileWriter(file);
@@ -206,7 +206,7 @@ public class ToDoListAppController implements Initializable {
     }
 
     @FXML
-    private void loadFile(ActionEvent ae){
+    public void loadFile(ActionEvent ae){
 
         File file = fileChooser.showOpenDialog(new Stage());
 
