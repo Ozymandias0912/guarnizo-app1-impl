@@ -1,38 +1,35 @@
 package baseline;
 
-import javafx.scene.control.CheckBox;
+
+import java.time.LocalDate;
 
 public class Item {
     //create Item class
 
-    //private row
-    private int row;
+
     //private Title
     private String title;
 //private description
     private String description;
 //private complete
-    private CheckBox complete;
+    private Boolean complete;
 //private dueDate (YYYY-MM-DD)
     private String dueDateString;
 
-    //constructor
 
+    //constructor for optional date
+    public Item(String title, String description, Boolean complete) {
+        this.title = title;
+        this.description = description;
+        this.complete = complete;
+    }
 
-    public Item(int row, String title, String description, CheckBox complete, String dueDateString) {
-        this.row = row;
+    public Item(String title, String description, Boolean complete, String dueDateString) {
+
         this.title = title;
         this.description = description;
         this.complete = complete;
         this.dueDateString = dueDateString;
-    }
-
-    public int getRow() {
-        return row;
-    }
-
-    public void setRow(int row) {
-        this.row = row;
     }
 
     public String getTitle() {
@@ -51,11 +48,11 @@ public class Item {
         this.description = description;
     }
 
-    public CheckBox getComplete() {
+    public Boolean getComplete() {
         return complete;
     }
 
-    public void setComplete(CheckBox complete) {
+    public void setComplete(Boolean complete) {
         this.complete = complete;
     }
 
@@ -65,5 +62,19 @@ public class Item {
 
     public void setDueDateString(String dueDateString) {
         this.dueDateString = dueDateString;
+    }
+
+    public String validateDescription(String input){
+
+        int inputLength = input.length();
+        String defaultDescription = "Try a description between 1 and 256 characters";
+
+        if (inputLength < 1 || inputLength > 256){
+
+            return defaultDescription;
+        }
+        else{
+            return input;
+        }
     }
 }//end Item class
