@@ -14,22 +14,13 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="723.0" prefWidth="940.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="baseline.ToDoListAppController">
    <top>
-      <MenuBar prefHeight="18.0" prefWidth="752.0" BorderPane.alignment="CENTER">
+      <MenuBar prefHeight="0.0" prefWidth="940.0" BorderPane.alignment="CENTER">
         <menus>
           <Menu mnemonicParsing="false" text="File">
             <items>
               <MenuItem mnemonicParsing="false" text="Close" />
-                  <MenuItem mnemonicParsing="false" text="Save As" />
-                  <Menu mnemonicParsing="false" text="Save">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
-                  <Menu mnemonicParsing="false" text="New">
-                    <items>
-                      <MenuItem mnemonicParsing="false" text="Action 1" />
-                    </items>
-                  </Menu>
+                  <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Save As" />
+                  <MenuItem mnemonicParsing="false" onAction="#loadFile" text="Load" />
             </items>
           </Menu>
 
@@ -53,7 +44,6 @@
                   <Button layoutX="126.0" layoutY="58.0" mnemonicParsing="false" onAction="#removeTask" text="Delete Task" />
                   <Button layoutX="115.0" layoutY="94.0" mnemonicParsing="false" onAction="#removeAllTasks" text="Delete All Tasks" />
                   <Button layoutX="21.0" layoutY="94.0" mnemonicParsing="false" onAction="#editTask" text="Edit Task" />
-                  <Button layoutX="372.0" layoutY="58.0" mnemonicParsing="false" onAction="#showDone" text="Show completed tasks" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="760.0">

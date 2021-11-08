@@ -1,8 +1,5 @@
 package baseline;
 
-
-import java.time.LocalDate;
-
 public class Item {
     //create Item class
 

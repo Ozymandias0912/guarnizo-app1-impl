@@ -9,6 +9,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 
 public class ToDoListApplication extends Application {
@@ -22,6 +23,20 @@ public class ToDoListApplication extends Application {
     }
 
     public static void main(String[] args) {
+
+        File file = new File("src\\saved files");
+        try{
+            file.createNewFile();
+        }
+        catch(IOException e){
+
+            e.printStackTrace();
+        }
+
+
+
+
+
         launch();
     }
 }

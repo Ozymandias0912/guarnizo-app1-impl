@@ -1,7 +1,5 @@
 package baseline;
 
-
-import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 
 import javafx.collections.ObservableList;
@@ -11,11 +9,18 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.CheckBoxTableCell;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.Scanner;
 
 
 public class ToDoListAppController implements Initializable {
@@ -50,7 +55,8 @@ public class ToDoListAppController implements Initializable {
     @FXML
     private DatePicker datePicker;
 
-
+    @FXML
+    private FileChooser fileChooser = new FileChooser();
 
 
 
@@ -69,6 +75,8 @@ public class ToDoListAppController implements Initializable {
 
 
         table.setItems(list);
+
+        fileChooser.setInitialDirectory(new File("src\\saved files"));
 
     }//end initialize
 
@@ -163,8 +171,72 @@ public class ToDoListAppController implements Initializable {
     }
 
 
-    //save in file button
-    
+    //save in file menu: file -> save as
+
+    @FXML
+    public void saveFile(ActionEvent ae){
+
+        File file = fileChooser.showSaveDialog(new Stage());
+
+        if(file != null){
+
+            String content = "";
+
+            for(int i = 0; i < list.size(); i++){
+
+                content = content + list.get(i).getTitle() + " " + list.get(i).getDescription() + " " +
+                        list.get(i).getDueDateString() + " " + list.get(i).getComplete().toString() + "\n";
+            }
+
+
+            save(file, content);
+        }
+    }
+
+    private void save(File file, String content) {
+
+        try{
+            FileWriter writer = new FileWriter(file);
+            writer.write(content);
+            writer.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void loadFile(ActionEvent ae){
+
+        File file = fileChooser.showOpenDialog(new Stage());
+
+        try {
+            Scanner input = new Scanner(file);
+
+            String title;
+            String description;
+            String dueDate;
+            Boolean completed;
+
+            while(input.hasNext()){
+
+                title = input.next();
+                dueDate = input.next();
+                description = input.next();
+                completed = input.nextBoolean();
+
+                Item task = new Item(title, description, completed, dueDate);
+
+                list.add(task);
+            }
+
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 
 
 }//end class controller
